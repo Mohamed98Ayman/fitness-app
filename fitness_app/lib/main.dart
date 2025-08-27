@@ -1,8 +1,11 @@
 import 'package:fitness_app/design_system/app_design_system.model.dart';
-import 'package:fitness_app/home/presentation/view/home.screen.widget.dart';
+import 'package:fitness_app/network/application/services/http.service.dart';
+import 'package:fitness_app/routing/router.config.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await HttpClientService.init('https://exercisedb.p.rapidapi.com/');
   runApp(const MyApp());
 }
 
@@ -33,11 +36,11 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: 'A-Fitness App',
       darkTheme: darkTheme,
       theme: lightTheme,
-      home: const HomeScreen(),
+      routerConfig: FitnessRouterConfig.router,
     );
   }
 }
