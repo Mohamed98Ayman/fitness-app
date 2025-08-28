@@ -43,7 +43,7 @@ class ShellAppRoute extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => router.go('/home'),
                   icon: Icon(Icons.home, size: design.sizes.s24),
                 ),
                 IconButton(
@@ -51,7 +51,7 @@ class ShellAppRoute extends StatelessWidget {
                   icon: Icon(Icons.sports_gymnastics, size: design.sizes.s24),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => router.go('/search'),
                   icon: Icon(Icons.search, size: design.sizes.s24),
                 ),
                 IconButton(

@@ -77,35 +77,6 @@ class HttpClientService {
     );
   }
 
-  static Future<Response<dynamic>> _executeMultipartRequest(
-    EndpointSignature endpointSignature,
-    Uri uri,
-  ) async {
-    FormData formData = FormData();
-
-    if (endpointSignature.body != null &&
-        endpointSignature.body is Map<String, String>) {
-      final fields = endpointSignature.body as Map<String, String>;
-      for (final entry in fields.entries) {
-        if (entry.key.isNotEmpty) {
-          formData.fields.add(MapEntry(entry.key, entry.value));
-        }
-      }
-    }
-
-    return _client.request(
-      uri.toString(),
-      data: formData,
-      options: Options(
-        method: endpointSignature.requestMethod.name,
-        extra: {endpointSignatureKey: endpointSignature},
-        headers: endpointSignature.requestHeaders,
-        sendTimeout: endpointSignature.timeoutDuration,
-        receiveTimeout: endpointSignature.timeoutDuration,
-      ),
-    );
-  }
-
   static dynamic _prepareRequestData(EndpointSignature endpointSignature) {
     if (endpointSignature.body == null) return null;
     if (endpointSignature.body is String) {

@@ -2,6 +2,7 @@
 
 import 'package:fitness_app/common/presentation/shell_app_route.widget.dart';
 import 'package:fitness_app/home/presentation/view/home.screen.widget.dart';
+import 'package:fitness_app/search/presentation/view/search.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 // endregion
@@ -39,7 +40,7 @@ class FitnessRouterConfig {
               ),
             ],
           ),
-          GoRoute(path: '/search', builder: (context, state) => HomeScreen()),
+          GoRoute(path: '/search', builder: (context, state) => SearchScreen()),
           GoRoute(path: '/profile', builder: (context, state) => HomeScreen()),
         ],
       ),
