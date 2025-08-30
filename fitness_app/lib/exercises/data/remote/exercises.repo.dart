@@ -1,6 +1,4 @@
-import 'package:fitness_app/exercises/application/extensions/exercise_summary_thumbnail.extension.dart';
 import 'package:fitness_app/exercises/domain/models/exercise_summary.dto.dart';
-import 'package:fitness_app/exercises/domain/models/exercise_summary_thumbnail.model.dart';
 import 'package:fitness_app/network/domain/enums/request_method.enum.dart';
 import 'package:fitness_app/network/domain/models/endpoint_signature.model.dart';
 
@@ -24,15 +22,20 @@ class ExerciseApis {
       return List<ExerciseSummary>.empty();
     },
   );
-  static EndpointSignature getExerciseThumbnail({
-    required ExerciseSummaryThumbnail thumbnailQueryParams,
+
+  static EndpointSignature getExerciseSearch({
+    required String searchTerm,
   }) => EndpointSignature(
     baseUrl: dotenv.env['EXERCISES_DB_URL'],
     requestMethod: HttpRequestMethod.get,
-    path: 'image',
-    queryParameters: thumbnailQueryParams.toQueryParams(),
+    path: '$_basePathParam/name/$searchTerm',
     responseBuilder: (data) {
-      return data as String;
+      if (data is List && data.isNotEmpty) {
+        return data
+            .map((exerciseSummary) => ExerciseSummary.fromJson(exerciseSummary))
+            .toList();
+      }
+      return List<ExerciseSummary>.empty();
     },
   );
 }
