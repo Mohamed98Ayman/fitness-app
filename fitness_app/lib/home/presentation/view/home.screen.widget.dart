@@ -1,4 +1,4 @@
-import 'package:fitness_app/common/presentation/view/scaffold/app_scaffold.widget.dart';
+import 'package:fitness_app/common/presentation/view/widgets/scaffold/app_scaffold.widget.dart';
 import 'package:fitness_app/design_system/design_systems.extension.dart';
 import 'package:flutter/material.dart';
 

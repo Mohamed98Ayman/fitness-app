@@ -1,5 +1,3 @@
-import 'dart:math';
-
 class AppSizes {
   final double s1;
   final double s2;

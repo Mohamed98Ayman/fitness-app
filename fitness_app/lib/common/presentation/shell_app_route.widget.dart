@@ -14,7 +14,7 @@ class ShellAppRoute extends StatelessWidget {
     int currentIndex = 0;
     if (location != null) {
       if (location.startsWith('/search')) {
-        currentIndex = 1;
+        currentIndex = 2;
       } else if (location.startsWith('/profile')) {
         currentIndex = 2;
       }
@@ -34,8 +34,14 @@ class ShellAppRoute extends StatelessWidget {
           child: Container(
             height: design.sizes.s60,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: design.colors.primaryAppColors.x1B1D24,
               borderRadius: BorderRadius.all(Radius.circular(60)),
+              border: Border.all(
+                width: 2.0,
+                color: design.colors.primaryAppColors.xD1D2D2.withValues(
+                  alpha: 0.2,
+                ),
+              ),
               boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
             ),
             child: Row(
@@ -44,19 +50,47 @@ class ShellAppRoute extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () => router.go('/home'),
-                  icon: Icon(Icons.home, size: design.sizes.s24),
+                  icon: Icon(
+                    Icons.home,
+                    size: design.sizes.s24,
+                    color:
+                        currentIndex == 0
+                            ? design.colors.primaryAppColors.x00D6D7
+                            : design.colors.primaryAppColors.x8F99A3,
+                  ),
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.sports_gymnastics, size: design.sizes.s24),
+                  icon: Icon(
+                    Icons.sports_gymnastics,
+                    size: design.sizes.s24,
+                    color:
+                        currentIndex == 1
+                            ? design.colors.primaryAppColors.x00D6D7
+                            : design.colors.primaryAppColors.x8F99A3,
+                  ),
                 ),
                 IconButton(
                   onPressed: () => router.go('/search'),
-                  icon: Icon(Icons.search, size: design.sizes.s24),
+                  icon: Icon(
+                    Icons.search,
+                    size: design.sizes.s24,
+                    color:
+                        currentIndex == 2
+                            ? design.colors.primaryAppColors.x00D6D7
+                            : design.colors.primaryAppColors.x8F99A3,
+                  ),
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.person, size: design.sizes.s24),
+                  icon: Icon(
+                    Icons.person,
+                    size: design.sizes.s24,
+                    color:
+                        currentIndex == 3
+                            ? design.colors.primaryAppColors.x00D6D7
+                            : design.colors.primaryAppColors.x8F99A3,
+                  ),
                 ),
               ],
             ),

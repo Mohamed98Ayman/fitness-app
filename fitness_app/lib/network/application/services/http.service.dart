@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:fitness_app/network/domain/enums/network_protocol_type.enum.dart';
 import 'package:fitness_app/network/domain/models/endpoint_signature.model.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class HttpClientService {
   static const HttpClientService _instance = HttpClientService._();
@@ -26,8 +28,14 @@ class HttpClientService {
         validateStatus:
             (status) => status != null && status >= 200 && status < 300,
         followRedirects: true,
+
         maxRedirects: 5,
-        headers: {},
+        headers: {
+          'x-rapidapi-key': dotenv.env['X_RAPID_API_KEY'],
+          'content-security-policy':
+              "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests",
+          'x-rapidapi-host': 'exercisedb.p.rapidapi.com',
+        },
       ),
     );
   }
@@ -43,6 +51,18 @@ class HttpClientService {
       Response<dynamic> response;
 
       response = await _executeStandardRequest(endpointSignature, uri);
+
+      switch (endpointSignature.protocol) {
+        case NetworkProtocolType.multiPartHttps:
+        case NetworkProtocolType.multiPartHttp:
+          response = await _executeMultipartRequest(endpointSignature, uri);
+          break;
+        case NetworkProtocolType.https:
+        case NetworkProtocolType.http:
+        case NetworkProtocolType.sse:
+          response = await _executeStandardRequest(endpointSignature, uri);
+          break;
+      }
 
       final processedResponse = await _processResponse(
         endpointSignature,
@@ -132,5 +152,51 @@ class HttpClientService {
     } else {
       return processedResponse;
     }
+  }
+
+  static Future<Response<dynamic>> _executeMultipartRequest(
+    EndpointSignature endpointSignature,
+    Uri uri,
+  ) async {
+    FormData formData = FormData();
+
+    if (endpointSignature.body != null &&
+        endpointSignature.body is Map<String, String>) {
+      final fields = endpointSignature.body as Map<String, String>;
+      for (final entry in fields.entries) {
+        if (entry.key.isNotEmpty) {
+          formData.fields.add(MapEntry(entry.key, entry.value));
+        }
+      }
+    }
+
+    if (endpointSignature.file != null) {
+      final file = endpointSignature.file!;
+      try {
+        formData.files.add(
+          MapEntry(
+            file.field,
+            await MultipartFile.fromFile(
+              file.file.path,
+              filename: file.file.uri.pathSegments.last,
+            ),
+          ),
+        );
+      } catch (e) {
+        throw Exception();
+      }
+    }
+
+    return _client.request(
+      uri.toString(),
+      data: formData,
+      options: Options(
+        method: endpointSignature.requestMethod.name,
+        extra: {endpointSignatureKey: endpointSignature},
+        headers: endpointSignature.requestHeaders,
+        sendTimeout: endpointSignature.timeoutDuration,
+        receiveTimeout: endpointSignature.timeoutDuration,
+      ),
+    );
   }
 }

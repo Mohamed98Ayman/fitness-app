@@ -26,6 +26,7 @@ class AppSpacings {
   final double s84;
   final double s100;
   final double s120;
+  final double s130;
 
   const AppSpacings({
     required this.s0,
@@ -55,6 +56,7 @@ class AppSpacings {
     required this.s84,
     required this.s100,
     required this.s120,
+    required this.s130,
   });
 
   factory AppSpacings.base() {
@@ -86,6 +88,7 @@ class AppSpacings {
       s84: 84,
       s100: 100,
       s120: 120,
+      s130: 130,
     );
   }
 

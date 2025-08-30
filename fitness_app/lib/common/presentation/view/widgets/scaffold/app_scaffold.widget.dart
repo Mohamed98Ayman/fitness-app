@@ -1,4 +1,3 @@
-import 'package:fitness_app/design_system/design_systems.extension.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -55,16 +54,13 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final design = context.design;
     return Scaffold(
       appBar:
           appBar != null
               ? PreferredSize(
                 preferredSize: appBar!.preferredSize,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: design.spacings.s16,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 0),
                   child: appBar!,
                 ),
               )

@@ -2,11 +2,14 @@ import 'package:fitness_app/design_system/app_design_system.model.dart';
 import 'package:fitness_app/network/application/services/http.service.dart';
 import 'package:fitness_app/routing/router.config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: "lib/.env");
   await HttpClientService.init('https://exercisedb.p.rapidapi.com/');
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
