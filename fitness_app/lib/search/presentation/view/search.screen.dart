@@ -42,7 +42,7 @@ class SearchScreen extends ConsumerWidget {
           IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
         ],
       ),
-      backgroundColor: const Color(0xFF11121A),
+      backgroundColor: design.colors.primaryAppColors.x11121A,
       body: Padding(
         padding: EdgeInsets.only(
           top: design.spacings.s130,

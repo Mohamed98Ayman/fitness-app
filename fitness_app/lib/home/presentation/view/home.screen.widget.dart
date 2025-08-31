@@ -10,8 +10,7 @@ class HomeScreen extends StatelessWidget {
     final design = context.design;
     final mediaQuery = MediaQuery.of(context).size;
     return AppScaffold(
-      extendBody: true,
-      extendBodyBehindAppBar: true,
+      backgroundColor: design.colors.primaryAppColors.x11121A,
       appBar: AppBar(
         leadingWidth: mediaQuery.width - design.sizes.s32,
         toolbarHeight: design.sizes.s92,
@@ -41,22 +40,14 @@ class HomeScreen extends StatelessWidget {
           IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
         ],
       ),
-      body: Container(
-        color: design.colors.primaryAppColors.x1D1D1D,
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              stops: [0.1, 0.3, 1],
-              colors: [
-                design.colors.primaryAppColors.x0A0708.withValues(alpha: 0.5),
-                design.colors.primaryAppColors.x0A0708.withValues(alpha: 0.5),
-                design.colors.primaryAppColors.xFFFFFF.withValues(alpha: 0),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(design.spacings.s16),
+              child: Text('Home Screen', style: TextStyle(color: Colors.white)),
             ),
-          ),
-          child: const Center(child: Text('')),
+          ],
         ),
       ),
     );
