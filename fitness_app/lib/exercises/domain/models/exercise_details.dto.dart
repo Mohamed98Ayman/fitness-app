@@ -1,4 +1,4 @@
-class ExerciseSummaryDto {
+class ExerciseDetailsDto {
   final String id;
   final String name;
   final String description;
@@ -10,7 +10,7 @@ class ExerciseSummaryDto {
   final List<String> secondaryMuscles;
   final List<String> instructions;
 
-  ExerciseSummaryDto({
+  ExerciseDetailsDto({
     required this.id,
     required this.name,
     required this.description,
@@ -23,8 +23,8 @@ class ExerciseSummaryDto {
     required this.instructions,
   });
 
-  factory ExerciseSummaryDto.fromJson(Map<String, dynamic> data) {
-    return ExerciseSummaryDto(
+  factory ExerciseDetailsDto.fromJson(Map<String, dynamic> data) {
+    return ExerciseDetailsDto(
       id: data['id'],
       name: data['name'],
       description: data['description'],
@@ -58,10 +58,10 @@ class ExerciseSummaryDto {
       return true;
     }
     if (runtimeType != other.runtimeType) return false;
-    return other is ExerciseSummaryDto && hashCode == other.hashCode;
+    return other is ExerciseDetailsDto && hashCode == other.hashCode;
   }
 
   @override
   String toString() =>
-      'ExerciseSummaryDto(id: $id, name: $name, description: $description, difficulty: $difficulty, category: $category, bodyPart: $bodyPart, equipment: $equipment, target: $target, secondaryMuscles: $secondaryMuscles, instructions: $instructions)';
+      'ExerciseDetailsDto(id: $id, name: $name, description: $description, difficulty: $difficulty, category: $category, bodyPart: $bodyPart, equipment: $equipment, target: $target, secondaryMuscles: $secondaryMuscles, instructions: $instructions)';
 }

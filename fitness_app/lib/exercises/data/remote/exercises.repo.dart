@@ -1,3 +1,4 @@
+import 'package:fitness_app/exercises/domain/models/exercise_details.dto.dart';
 import 'package:fitness_app/exercises/domain/models/exercise_summary.dto.dart';
 import 'package:fitness_app/network/domain/enums/request_method.enum.dart';
 import 'package:fitness_app/network/domain/models/endpoint_signature.model.dart';
@@ -16,10 +17,22 @@ class ExerciseApis {
     responseBuilder: (data) {
       if (data is List && data.isNotEmpty) {
         return data
-            .map((exerciseSummary) => ExerciseSummary.fromJson(exerciseSummary))
+            .map(
+              (exerciseSummary) => ExerciseSummaryDto.fromJson(exerciseSummary),
+            )
             .toList();
       }
-      return List<ExerciseSummary>.empty();
+      return List<ExerciseSummaryDto>.empty();
     },
   );
+
+  static EndpointSignature getExercisieDetials({required String exerciseId}) =>
+      EndpointSignature(
+        baseUrl: dotenv.env['EXERCISES_DB_URL'],
+        requestMethod: HttpRequestMethod.get,
+        path: '$_basePathParam/exercise/$exerciseId',
+        responseBuilder: (data) {
+          return ExerciseDetailsDto.fromJson(data);
+        },
+      );
 }

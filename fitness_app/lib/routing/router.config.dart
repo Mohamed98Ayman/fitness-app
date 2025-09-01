@@ -1,4 +1,5 @@
 import 'package:fitness_app/common/presentation/shell_app_route.widget.dart';
+import 'package:fitness_app/exercises/presentation/view/widgets/exercise_details/exercise_details.screen.dart';
 import 'package:fitness_app/home/presentation/view/home.screen.widget.dart';
 import 'package:fitness_app/search/presentation/view/search.screen.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,8 @@ class FitnessRouterConfig {
 
   static final GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/home',
+    initialLocation: '/',
+
     routes: [
       ShellRoute(
         navigatorKey: _shellNavigatorKey,
@@ -25,30 +27,39 @@ class FitnessRouterConfig {
         },
         routes: [
           GoRoute(
-            path: '/home',
+            path: '/',
 
             pageBuilder:
                 (context, state) => NoTransitionPage(child: HomeScreen()),
-
-            routes: [
-              GoRoute(
-                path: 'details',
-                pageBuilder:
-                    (context, state) => NoTransitionPage(child: HomeScreen()),
-              ),
-            ],
           ),
           GoRoute(
             path: '/search',
+
             pageBuilder:
                 (context, state) => NoTransitionPage(child: SearchScreen()),
-          ),
-          GoRoute(
-            path: '/profile',
-            pageBuilder:
-                (context, state) => NoTransitionPage(child: HomeScreen()),
+            routes: [
+              GoRoute(
+                name: 'exercise_details',
+                path: 'exercise-details',
+                parentNavigatorKey: _rootNavigatorKey,
+                pageBuilder: (context, state) {
+                  if (state.extra is String && state.extra != null) {
+                    final exerciseId = state.extra! as String;
+                    return MaterialPage(
+                      key: state.pageKey,
+                      child: ExerciseDetailsScreen(exerciseId: exerciseId),
+                    );
+                  }
+                  return const NoTransitionPage(child: HomeScreen());
+                },
+              ),
+            ],
           ),
         ],
+      ),
+      GoRoute(
+        path: '/profile',
+        pageBuilder: (context, state) => NoTransitionPage(child: HomeScreen()),
       ),
     ],
   );

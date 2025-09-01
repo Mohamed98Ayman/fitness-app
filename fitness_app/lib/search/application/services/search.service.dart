@@ -8,16 +8,16 @@ import 'package:fitness_app/search/domain/models/applied_filters_state.model.dar
 class SearchService {
   const SearchService._();
 
-  static Future<List<ExerciseSummary>> getExercisesSummary() async =>
+  static Future<List<ExerciseSummaryDto>> getExercisesSummary() async =>
       await HttpClientService.sendRequest(ExerciseApis.getExercisiesSummary());
 
-  static Future<List<ExerciseSummary>> getExerciseSearch({
+  static Future<List<ExerciseSummaryDto>> getExerciseSearch({
     required String searchTerm,
   }) async => await HttpClientService.sendRequest(
     SearchApis.getExerciseSearch(searchTerm: searchTerm),
   );
 
-  static Future<List<ExerciseSummary>> getFilteredExercises({
+  static Future<List<ExerciseSummaryDto>> getFilteredExercises({
     required AppliedFiltersState appliedFiltersState,
   }) async {
     if (appliedFiltersState.hasBodyPartFilter) {
@@ -39,6 +39,6 @@ class SearchService {
         ),
       );
     }
-    return List<ExerciseSummary>.empty();
+    return List<ExerciseSummaryDto>.empty();
   }
 }

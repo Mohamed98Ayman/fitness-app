@@ -9,21 +9,23 @@ class SearchApis {
 
   static const String _basePathParam = '/exercises';
 
-  static EndpointSignature getExerciseSearch({
-    required String searchTerm,
-  }) => EndpointSignature(
-    baseUrl: dotenv.env['EXERCISES_DB_URL'],
-    requestMethod: HttpRequestMethod.get,
-    path: '$_basePathParam/name/$searchTerm',
-    responseBuilder: (data) {
-      if (data is List && data.isNotEmpty) {
-        return data
-            .map((exerciseSummary) => ExerciseSummary.fromJson(exerciseSummary))
-            .toList();
-      }
-      return List<ExerciseSummary>.empty();
-    },
-  );
+  static EndpointSignature getExerciseSearch({required String searchTerm}) =>
+      EndpointSignature(
+        baseUrl: dotenv.env['EXERCISES_DB_URL'],
+        requestMethod: HttpRequestMethod.get,
+        path: '$_basePathParam/name/$searchTerm',
+        responseBuilder: (data) {
+          if (data is List && data.isNotEmpty) {
+            return data
+                .map(
+                  (exerciseSummary) =>
+                      ExerciseSummaryDto.fromJson(exerciseSummary),
+                )
+                .toList();
+          }
+          return List<ExerciseSummaryDto>.empty();
+        },
+      );
 
   static EndpointSignature getFilteredExercisesByBodyPart({
     required String bodyPart,
@@ -34,10 +36,12 @@ class SearchApis {
     responseBuilder: (data) {
       if (data is List && data.isNotEmpty) {
         return data
-            .map((exerciseSummary) => ExerciseSummary.fromJson(exerciseSummary))
+            .map(
+              (exerciseSummary) => ExerciseSummaryDto.fromJson(exerciseSummary),
+            )
             .toList();
       }
-      return List<ExerciseSummary>.empty();
+      return List<ExerciseSummaryDto>.empty();
     },
   );
 
@@ -50,10 +54,12 @@ class SearchApis {
     responseBuilder: (data) {
       if (data is List && data.isNotEmpty) {
         return data
-            .map((exerciseSummary) => ExerciseSummary.fromJson(exerciseSummary))
+            .map(
+              (exerciseSummary) => ExerciseSummaryDto.fromJson(exerciseSummary),
+            )
             .toList();
       }
-      return List<ExerciseSummary>.empty();
+      return List<ExerciseSummaryDto>.empty();
     },
   );
 
@@ -66,10 +72,12 @@ class SearchApis {
     responseBuilder: (data) {
       if (data is List && data.isNotEmpty) {
         return data
-            .map((exerciseSummary) => ExerciseSummary.fromJson(exerciseSummary))
+            .map(
+              (exerciseSummary) => ExerciseSummaryDto.fromJson(exerciseSummary),
+            )
             .toList();
       }
-      return List<ExerciseSummary>.empty();
+      return List<ExerciseSummaryDto>.empty();
     },
   );
 }

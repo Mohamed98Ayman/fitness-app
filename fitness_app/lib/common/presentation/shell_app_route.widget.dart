@@ -49,7 +49,7 @@ class ShellAppRoute extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  onPressed: () => router.go('/home'),
+                  onPressed: () => router.go('/'),
                   icon: Icon(
                     Icons.home,
                     size: design.sizes.s24,

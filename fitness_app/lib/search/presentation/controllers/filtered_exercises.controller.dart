@@ -7,14 +7,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final filteredExercisesController = AsyncNotifierProvider.family<
   FilteredExercisesController,
-  List<ExerciseSummary>,
+  List<ExerciseSummaryDto>,
   AppliedFiltersState
 >(() => FilteredExercisesController());
 
 class FilteredExercisesController
-    extends FamilyAsyncNotifier<List<ExerciseSummary>, AppliedFiltersState> {
+    extends FamilyAsyncNotifier<List<ExerciseSummaryDto>, AppliedFiltersState> {
   @override
-  FutureOr<List<ExerciseSummary>> build(arg) {
+  FutureOr<List<ExerciseSummaryDto>> build(arg) {
     return SearchService.getFilteredExercises(appliedFiltersState: arg);
   }
 }

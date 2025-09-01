@@ -4,11 +4,13 @@ class PrimaryAppColors {
   final Color x000000;
   final Color x00D6D7;
   final Color x11121A;
+  final Color x191C23;
   final Color x1A1F28;
   final Color x1A2C43;
   final Color x1B1D24;
   final Color x1D1D1D;
   final Color x22242C;
+  final Color x2C7CEE;
   final Color x0A0708;
   final Color x8F99A3;
   final Color xC43406;
@@ -21,11 +23,13 @@ class PrimaryAppColors {
     required this.x000000,
     required this.x00D6D7,
     required this.x11121A,
+    required this.x191C23,
     required this.x1A1F28,
     required this.x1A2C43,
     required this.x1B1D24,
     required this.x1D1D1D,
     required this.x22242C,
+    required this.x2C7CEE,
     required this.x0A0708,
     required this.x8F99A3,
     required this.xC43406,
@@ -40,11 +44,13 @@ class PrimaryAppColors {
       x000000: const Color(0xff000000),
       x00D6D7: const Color(0xff00D6D7),
       x11121A: const Color(0xff11121A),
+      x191C23: const Color(0xff191C23),
       x1A1F28: const Color(0xff1A1F28),
       x1A2C43: const Color(0xff1A2C43),
       x1B1D24: const Color(0xff1B1D24),
       x1D1D1D: const Color(0xff1D1D1D),
       x22242C: const Color(0xff22242C),
+      x2C7CEE: const Color(0xff2C7CEE),
       x0A0708: const Color(0xff0A0708),
       x8F99A3: const Color(0xff8F99A3),
       xC43406: const Color(0xffC43406),
@@ -60,11 +66,13 @@ class PrimaryAppColors {
       x000000: const Color(0xff000000),
       x00D6D7: const Color(0xff00D6D7),
       x11121A: const Color(0xff11121A),
+      x191C23: const Color(0xff191C23),
       x1A1F28: const Color(0xff1A1F28),
       x1A2C43: const Color(0xff1A2C43),
       x1B1D24: const Color(0xff1B1D24),
       x1D1D1D: const Color(0xff1D1D1D),
       x22242C: const Color(0xff22242C),
+      x2C7CEE: const Color(0xff2C7CEE),
       x0A0708: const Color(0xff0A0708),
       x8F99A3: const Color(0xff8F99A3),
       xC43406: const Color(0xffC43406),

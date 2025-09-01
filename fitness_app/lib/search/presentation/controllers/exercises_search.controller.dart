@@ -3,6 +3,6 @@ import 'package:fitness_app/search/application/services/search.service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final exerciseSearchController =
-    FutureProvider.family<List<ExerciseSummary>, String>(
+    FutureProvider.family<List<ExerciseSummaryDto>, String>(
       (ref, arg) => SearchService.getExerciseSearch(searchTerm: arg),
     );
