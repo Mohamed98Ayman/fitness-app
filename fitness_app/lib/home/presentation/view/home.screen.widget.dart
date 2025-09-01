@@ -40,17 +40,47 @@ class HomeScreen extends StatelessWidget {
           IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(design.spacings.s16),
-              child: Text(
-                'Home Screen',
-                style: TextStyle(color: design.colors.primaryAppColors.xFFFFFF),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: design.spacings.s16),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  gradient: LinearGradient(
+                    colors: [
+                      design.colors.primaryAppColors.x139A95,
+                      design.colors.primaryAppColors.x0E3556,
+                    ],
+                    begin: AlignmentDirectional.topEnd,
+                    end: AlignmentDirectional.topStart,
+                  ),
+                ),
+                padding: EdgeInsets.all(design.spacings.s16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Welcome to A-Fitness!',
+                      style: design.typography.s18w600xs18w600.copyWith(
+                        color: design.colors.primaryAppColors.xFFFFFF,
+                      ),
+                    ),
+                    SizedBox(height: design.spacings.s16),
+                    Text(
+                      'A-Fitness is your ultimate fitness companion. Whether you\'re just starting or pushing towards your next goal, A-Fitness provides all the exercises and instructions you need to train effectively.',
+                      style: design.typography.s14w500xs14w500.copyWith(
+                        color: design.colors.primaryAppColors.xFFFFFF,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

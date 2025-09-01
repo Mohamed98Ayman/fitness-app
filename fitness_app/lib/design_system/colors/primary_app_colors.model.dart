@@ -3,7 +3,9 @@ import 'dart:ui';
 class PrimaryAppColors {
   final Color x000000;
   final Color x00D6D7;
+  final Color x0E3556;
   final Color x11121A;
+  final Color x139A95;
   final Color x191C23;
   final Color x1A1F28;
   final Color x1A2C43;
@@ -22,7 +24,9 @@ class PrimaryAppColors {
   const PrimaryAppColors({
     required this.x000000,
     required this.x00D6D7,
+    required this.x0E3556,
     required this.x11121A,
+    required this.x139A95,
     required this.x191C23,
     required this.x1A1F28,
     required this.x1A2C43,
@@ -43,7 +47,9 @@ class PrimaryAppColors {
     return PrimaryAppColors(
       x000000: const Color(0xff000000),
       x00D6D7: const Color(0xff00D6D7),
+      x0E3556: const Color(0xff0E3556),
       x11121A: const Color(0xff11121A),
+      x139A95: const Color(0xff139A95),
       x191C23: const Color(0xff191C23),
       x1A1F28: const Color(0xff1A1F28),
       x1A2C43: const Color(0xff1A2C43),
@@ -65,7 +71,9 @@ class PrimaryAppColors {
     return PrimaryAppColors(
       x000000: const Color(0xff000000),
       x00D6D7: const Color(0xff00D6D7),
+      x0E3556: const Color(0xff0E3556),
       x11121A: const Color(0xff11121A),
+      x139A95: const Color(0xff139A95),
       x191C23: const Color(0xff191C23),
       x1A1F28: const Color(0xff1A1F28),
       x1A2C43: const Color(0xff1A2C43),

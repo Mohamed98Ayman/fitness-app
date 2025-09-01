@@ -1,7 +1,6 @@
 import 'package:fitness_app/design_system/design_systems.extension.dart';
 import 'package:fitness_app/exercises/presentation/view/widgets/exercise_details/widgets/instructions/exercise_instruction_step.widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ExerciseInstructions extends StatelessWidget {
   const ExerciseInstructions({super.key, required this.instructions});

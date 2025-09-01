@@ -1,6 +1,5 @@
 import 'package:fitness_app/design_system/design_systems.extension.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ExerciseCategory extends StatelessWidget {
   const ExerciseCategory({
