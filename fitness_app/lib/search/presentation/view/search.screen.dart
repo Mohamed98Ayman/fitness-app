@@ -1,7 +1,11 @@
 import 'package:fitness_app/common/presentation/view/widgets/scaffold/app_scaffold.widget.dart';
 import 'package:fitness_app/design_system/design_systems.extension.dart';
-import 'package:fitness_app/exercises/presentation/controllers/search_term.controller.dart';
+import 'package:fitness_app/search/presentation/controllers/search_term.controller.dart';
+import 'package:fitness_app/search/application/extensions/applied_filters_state.extension.model.dart';
+import 'package:fitness_app/search/presentation/controllers/applied_filters.controller.dart';
 import 'package:fitness_app/search/presentation/view/widgets/all_exercises.widget.dart';
+import 'package:fitness_app/search/presentation/view/widgets/filtered_exercises_cards.widget.dart';
+import 'package:fitness_app/search/presentation/view/widgets/filters/filters_bar.widget.dart';
 import 'package:fitness_app/search/presentation/view/widgets/search_bar.widget.dart';
 import 'package:fitness_app/search/presentation/view/widgets/searched_exercises.widget.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +16,7 @@ class SearchScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final hasAppliedFilter = ref.watch(appliedFiltersController).hasFilter;
     final searchTextController = ref.watch(exerciseSearchTermController);
     final design = context.design;
     final mediaQuery = MediaQuery.of(context).size;
@@ -53,8 +58,12 @@ class SearchScreen extends ConsumerWidget {
           mainAxisSize: MainAxisSize.max,
           children: [
             SearchSearchingBar(),
+            SizedBox(height: design.spacings.s6),
+            FiltersBar(),
             SizedBox(height: design.spacings.s12),
-            if (searchTextController.text.isEmpty) ...[
+            if (hasAppliedFilter) ...[
+              FilteredExercisesCards(),
+            ] else if (searchTextController.text.isEmpty) ...[
               SearchAllExercises(),
             ] else ...[
               SearchExercise(),

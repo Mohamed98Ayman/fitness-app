@@ -1,6 +1,6 @@
 import 'package:fitness_app/design_system/design_systems.extension.dart';
-import 'package:fitness_app/exercises/presentation/controllers/exercises_search.controller.dart';
-import 'package:fitness_app/exercises/presentation/controllers/search_term.controller.dart';
+import 'package:fitness_app/search/presentation/controllers/exercises_search.controller.dart';
+import 'package:fitness_app/search/presentation/controllers/search_term.controller.dart';
 import 'package:fitness_app/exercises/presentation/view/widgets/exercise_summary_card/exercise_summary_card.widget.dart';
 import 'package:fitness_app/search/presentation/view/widgets/exercises_cards_empty.widget.dart';
 import 'package:fitness_app/search/presentation/view/widgets/exercises_cards_error.widget.dart';
@@ -27,7 +27,6 @@ class SearchExercise extends ConsumerWidget {
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
-              SizedBox(height: design.spacings.s12),
               ListView.separated(
                 physics: NeverScrollableScrollPhysics(),
                 padding: EdgeInsets.zero,

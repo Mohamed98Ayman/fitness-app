@@ -45,7 +45,10 @@ class HomeScreen extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.all(design.spacings.s16),
-              child: Text('Home Screen', style: TextStyle(color: Colors.white)),
+              child: Text(
+                'Home Screen',
+                style: TextStyle(color: design.colors.primaryAppColors.xFFFFFF),
+              ),
             ),
           ],
         ),

@@ -1,5 +1,6 @@
 import 'package:fitness_app/design_system/design_systems.extension.dart';
-import 'package:fitness_app/exercises/presentation/controllers/search_term.controller.dart';
+import 'package:fitness_app/search/presentation/controllers/applied_filters.controller.dart';
+import 'package:fitness_app/search/presentation/controllers/search_term.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -27,10 +28,12 @@ class SearchSearchingBar extends ConsumerWidget {
                 controller: searchTextController,
                 focusNode: focusNode,
 
-                onChanged:
-                    (value) => ref
-                        .read(exerciseSearchTermController.notifier)
-                        .updateText(value),
+                onChanged: (value) {
+                  ref
+                      .read(exerciseSearchTermController.notifier)
+                      .updateText(value);
+                  ref.read(appliedFiltersController.notifier).resetFilters();
+                },
                 style: design.typography.s16w400xs16w400.copyWith(
                   color: design.colors.primaryAppColors.xF5F5F5,
                 ),

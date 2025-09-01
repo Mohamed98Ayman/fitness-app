@@ -48,6 +48,7 @@ class AppSizes {
   final double s256;
   final double s262;
   final double s280;
+  final double s400;
 
   const AppSizes({
     required this.s1,
@@ -99,6 +100,7 @@ class AppSizes {
     required this.s256,
     required this.s262,
     required this.s280,
+    this.s400 = 400.0,
   });
 
   factory AppSizes.base() {
@@ -152,6 +154,7 @@ class AppSizes {
       s256: 256.0,
       s262: 262.0,
       s280: 280.0,
+      s400: 400.0,
     );
   }
 

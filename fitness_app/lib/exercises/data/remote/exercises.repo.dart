@@ -22,20 +22,4 @@ class ExerciseApis {
       return List<ExerciseSummary>.empty();
     },
   );
-
-  static EndpointSignature getExerciseSearch({
-    required String searchTerm,
-  }) => EndpointSignature(
-    baseUrl: dotenv.env['EXERCISES_DB_URL'],
-    requestMethod: HttpRequestMethod.get,
-    path: '$_basePathParam/name/$searchTerm',
-    responseBuilder: (data) {
-      if (data is List && data.isNotEmpty) {
-        return data
-            .map((exerciseSummary) => ExerciseSummary.fromJson(exerciseSummary))
-            .toList();
-      }
-      return List<ExerciseSummary>.empty();
-    },
-  );
 }

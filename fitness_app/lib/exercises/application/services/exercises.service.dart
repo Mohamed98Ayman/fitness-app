@@ -7,10 +7,4 @@ class ExercisesService {
 
   static Future<List<ExerciseSummary>> getExercisesSummary() async =>
       await HttpClientService.sendRequest(ExerciseApis.getExercisiesSummary());
-
-  static Future<List<ExerciseSummary>> getExerciseSearch({
-    required String searchTerm,
-  }) async => await HttpClientService.sendRequest(
-    ExerciseApis.getExerciseSearch(searchTerm: searchTerm),
-  );
 }
