@@ -1,8 +1,7 @@
 import 'package:fitness_app/design_system/design_systems.extension.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ExerciseInstructionStep extends ConsumerWidget {
+class ExerciseInstructionStep extends StatelessWidget {
   const ExerciseInstructionStep({
     super.key,
     required this.index,
@@ -12,7 +11,7 @@ class ExerciseInstructionStep extends ConsumerWidget {
   final String instruction;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final design = context.design;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +27,7 @@ class ExerciseInstructionStep extends ConsumerWidget {
               vertical: design.spacings.s4,
             ),
             child: Text(
-              index.toString(),
+              (index + 1).toString(),
               overflow: TextOverflow.ellipsis,
               style: design.typography.s16w500xs16w500.copyWith(
                 color: design.colors.primaryAppColors.xFFFFFF,

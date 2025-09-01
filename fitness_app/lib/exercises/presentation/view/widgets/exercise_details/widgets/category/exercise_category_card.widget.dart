@@ -2,7 +2,7 @@ import 'package:fitness_app/design_system/design_systems.extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ExerciseCategory extends ConsumerWidget {
+class ExerciseCategory extends StatelessWidget {
   const ExerciseCategory({
     super.key,
     required this.title,
@@ -13,7 +13,7 @@ class ExerciseCategory extends ConsumerWidget {
   final String subTitle;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final design = context.design;
     return Container(
       decoration: BoxDecoration(

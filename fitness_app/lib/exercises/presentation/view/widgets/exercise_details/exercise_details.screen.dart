@@ -2,11 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fitness_app/common/presentation/view/widgets/scaffold/app_scaffold.widget.dart';
 import 'package:fitness_app/design_system/design_systems.extension.dart';
 import 'package:fitness_app/exercises/presentation/controllers/exercise_details.controller.dart';
-import 'package:fitness_app/exercises/presentation/view/widgets/exercise_details/widgets/exercise_category_card.widget.dart';
+import 'package:fitness_app/exercises/presentation/view/widgets/exercise_details/widgets/category/exercise_categories.widget.dart';
+import 'package:fitness_app/exercises/presentation/view/widgets/exercise_details/widgets/description/exercise_description.widget.dart';
 import 'package:fitness_app/exercises/presentation/view/widgets/exercise_details/widgets/exercise_details_loading.widget.dart';
-import 'package:fitness_app/exercises/presentation/view/widgets/exercise_details/widgets/exercise_instructions.widget.dart';
-import 'package:fitness_app/exercises/presentation/view/widgets/exercise_details/widgets/exercise_secondary_muscle.widget.dart';
-import 'package:fitness_app/exercises/presentation/view/widgets/exercise_tag.widget.dart';
+import 'package:fitness_app/exercises/presentation/view/widgets/exercise_details/widgets/instructions/exercise_instructions.widget.dart';
+import 'package:fitness_app/exercises/presentation/view/widgets/exercise_details/widgets/secondary_muscle/exercise_secondary_muscles.widget.dart';
+import 'package:fitness_app/exercises/presentation/view/widgets/exercise_details/widgets/tags/exercise_tags.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -114,101 +115,27 @@ class ExerciseDetailsScreen extends ConsumerWidget {
                       ),
                     ),
                     SizedBox(height: design.spacings.s16),
-                    Row(
-                      children: [
-                        ExerciseTag(
-                          title: exerciseDetails.category,
-                          color: design.colors.primaryAppColors.x00D6D7,
-                        ),
-                        SizedBox(width: design.spacings.s8),
-                        ExerciseTag(
-                          title: exerciseDetails.difficulty,
-                          color: design.colors.primaryAppColors.x2C7CEE,
-                        ),
-                      ],
+                    ExerciseTags(
+                      category: exerciseDetails.category,
+                      difficulty: exerciseDetails.difficulty,
                     ),
                     SizedBox(height: design.spacings.s16),
-                    Text(
-                      "description",
-                      maxLines: 2,
-                      style: design.typography.s18w700xs18w700.copyWith(
-                        color: design.colors.primaryAppColors.xFFFFFF,
-                      ),
-                    ),
-                    SizedBox(height: design.spacings.s8),
-                    Text(
-                      exerciseDetails.description,
-                      style: design.typography.s16w500xs16w500.copyWith(
-                        color: design.colors.primaryAppColors.xD1D2D2,
-                      ),
+                    ExerciseDescription(
+                      description: exerciseDetails.description,
                     ),
                     SizedBox(height: design.spacings.s16),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: ExerciseCategory(
-                            title: "Equipment",
-                            subTitle: exerciseDetails.equipment,
-                          ),
-                        ),
-                        SizedBox(width: design.sizes.s16),
-                        Expanded(
-                          child: ExerciseCategory(
-                            title: "Target",
-                            subTitle: exerciseDetails.target,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: design.spacings.s16),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: ExerciseCategory(
-                            title: "Body Part",
-                            subTitle: exerciseDetails.bodyPart,
-                          ),
-                        ),
-                        SizedBox(width: design.sizes.s16),
-                        Expanded(
-                          child: ExerciseCategory(
-                            title: "Difficulty",
-                            subTitle: exerciseDetails.difficulty,
-                          ),
-                        ),
-                      ],
+                    ExerciseCategories(
+                      bodyPart: exerciseDetails.bodyPart,
+                      difficulty: exerciseDetails.difficulty,
+                      equipment: exerciseDetails.equipment,
+                      target: exerciseDetails.target,
                     ),
                     SizedBox(height: design.sizes.s16),
-                    Text(
-                      "Secondary Muscles",
-                      style: design.typography.s18w700xs18w700.copyWith(
-                        color: design.colors.primaryAppColors.xFFFFFF,
-                      ),
-                    ),
-                    SizedBox(height: design.sizes.s8),
-                    SizedBox(
-                      height: design.sizes.s30,
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder:
-                            (context, index) => ExerciseSecondaryMuscle(
-                              title: exerciseDetails.secondaryMuscles[index],
-                            ),
-                        separatorBuilder:
-                            (context, index) =>
-                                SizedBox(width: design.spacings.s4),
-                        itemCount: exerciseDetails.secondaryMuscles.length,
-                      ),
+                    ExerciseExerciseMuscles(
+                      secondaryMuscles: exerciseDetails.secondaryMuscles,
                     ),
                     SizedBox(height: design.sizes.s16),
-                    Text(
-                      "Instructions",
-                      style: design.typography.s18w700xs18w700.copyWith(
-                        color: design.colors.primaryAppColors.xFFFFFF,
-                      ),
-                    ),
 
-                    SizedBox(height: design.sizes.s16),
                     ExerciseInstructions(
                       instructions: exerciseDetails.instructions,
                     ),

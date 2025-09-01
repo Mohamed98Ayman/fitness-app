@@ -1,13 +1,12 @@
 import 'package:fitness_app/design_system/design_systems.extension.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ExerciseSecondaryMuscle extends ConsumerWidget {
+class ExerciseSecondaryMuscle extends StatelessWidget {
   const ExerciseSecondaryMuscle({super.key, required this.title});
   final String title;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final design = context.design;
     return Container(
       decoration: BoxDecoration(
